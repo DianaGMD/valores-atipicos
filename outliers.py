@@ -39,20 +39,16 @@ print("Limite inferior permitido", Limite_Inferior_iqr)
 
 #Obtenemos datos limpios
 data_clean_iqr= df[ (y< Limite_Superior_iqr) & (y > Limite_Inferior_iqr) ]
-#print(data_clean_iqr)
+print(data_clean_iqr)
 
 fig = plt.figure(figsize =(5, 3))
 plt.boxplot(data_clean_iqr["ventas_precios_corrientes"]) 
 plt.title("Outliers de ventas_precios_corriente")
-#plt.show()
+plt.show()
 
 fig = plt.figure(figsize =(7, 3))
 plt.hist(x=data_clean_iqr["ventas_precios_corrientes"], color='blue', rwidth=0.50)
 plt.title('Histograma de ventas_precios_corrientes sin outliers')
 plt.xlabel('ventas_precios_corrientes')
 plt.ylabel('Frecuencia')
-#plt.show()
-
-data_clean_iqr["ventas_precios_corrientes"].to_csv('ventas_precios_corrientes.csv')
-files.download('ventas_precios_corrientes.csv')
-
+plt.show()
