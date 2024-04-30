@@ -3,11 +3,15 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Cargamos el archivo CSV
-df = pd.read_csv('ventas_totales_sinnulos.csv')
+# Cargamos el archivo en excel
+df = pd.read_excel('gastos_costos_20_23.xlsx')
 
 # Seleccionamos tres columnas para análisis de valores atípicos
-columns_to_analyze = ['ventas_precios_corrientes', 'ventas_precios_constantes', 'ventas_totales_canal_venta']
+columns_to_analyze = ['IMPORTE', 'IVA', 'TOTAL MX']
+
+#Eliminacion de valores nulos 
+for column in columns_to_analyze:
+    df[column].fillna(df[column].mean(), inplace=True)
 
 # Función para remover outliers utilizando Desviación Estándar
 def remove_outliers_std(df, column, z_score_threshold=3):
@@ -43,5 +47,5 @@ plt.show()
 
 # Guardamos los datos limpios en archivos CSV
 for column in columns_to_analyze:
-    clean_df = df[['indice_tiempo', column]].copy()
-    clean_df.to_csv(f'{column}_clean.csv', index=False)
+    clean_df = df[['FECHA', 'FOLIO', 'UUID', 'RFC', 'PROVEEDOR', 'TIPO GASTO', column]].copy()
+    clean_df.to_csv(f'{column}_clean.csv', index=False) 
