@@ -3,6 +3,11 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
+#print('hello outliers')
+df= pd.read_csv('ventas_totales_sinnulos.csv', index_col=0)
+#print(df.head())
+
 # Cargamos el archivo CSV
 df = pd.read_csv('ventas_totales_sinnulos.csv')
 
